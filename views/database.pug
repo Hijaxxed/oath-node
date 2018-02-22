@@ -1,0 +1,64 @@
+extends layout
+
+block content
+
+    table#dbtable
+        tr
+
+            th ID
+            th Last Name
+            th First Name
+            th Age 
+            th City
+            th Country
+            th Delete
+            th Edit
+        for persons in population
+            tr
+            for person in persons
+                td #{person}
+
+            td.trash
+                form(method='post' action='/deletePerson')
+                    button.btn.btn-info(type='submit' name='buttonSubmit' value=persons.id onclick='return confirm ("Are you use you want to delete this user from the database?")')
+                        i.fas.fa-trash-alt
+                        
+            td.edit
+                form(method='post' action='/editPerson')
+                    button.btn.btn-info(type='submit' name='buttonSubmit' value=persons)
+                        i.fas.fa-edit
+
+    .row
+        .col-lg-4.col-sm-12.offset-4
+
+            br
+            h2.text-center Add new person to the database
+            br
+
+            form.form(method='post' action='/newPerson')
+                div
+                    | First name:
+                    br
+                    input(type='text', name='firstName')
+                    br
+                    |   Last name:
+                    br
+                    input(type='text', name='lastName')
+                    br
+                    |   Age:
+                    br
+                    input(type='number', name='age')
+                    br
+                    |   City:
+                    br
+                    input(type='text', name='city')
+                    br
+                    |   Country:
+                    br
+                    input(type='text', name='country')
+                    br
+                    br
+                    input(type='submit', value='Submit')
+
+
+    // end container

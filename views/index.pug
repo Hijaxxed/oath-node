@@ -1,0 +1,48 @@
+extends layout
+
+block content
+
+  .row
+    .col-lg-12.col-sm-12
+      .intro
+        h2
+          | My name is 
+          u #{name}
+        p
+          | I am a transistion year student in St. Andrews College, in Booterstown. I am currently doing my work placement at Oath.
+          br
+          |  You can find their website at: 
+          a(href='https://www.oath.com') www.oath.com
+  // end row
+  .row
+    .col-lg-5.col-sm-12.bordered
+      p.big My hobbies include:
+      ul.fancyList
+        li Hockey
+        li Listening to music
+        li Gaming
+        li Art
+    .col-lg-5.col-sm-12.bordered
+      p.big I am looking forward to learning about:
+      ul.fancyList
+        li Real world applications of web development
+        li Databases
+        li How the process of targeted online advertising works
+        li Other stuff
+
+  // end row
+  .row
+    .col-lg-12.col-sm-12.text-center.bordered
+      #inputText
+        p.big
+          u JavaScript Testing
+        p#txt ...
+      button#button1(onclick='helloWorld()', type='button') Enter Text
+  // end row
+  script.
+    function helloWorld () {
+    //window.alert("Hello World");
+    var input = window.prompt("This is a text prompt" , "Enter something ...");
+    document.getElementById("txt").innerHTML = input;
+    }
+  // end container

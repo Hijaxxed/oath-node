@@ -1,0 +1,40 @@
+extends layout
+
+block content
+
+    .row
+        .col-lg-4.col-sm-12.offset-4
+
+            br
+            h2.text-center Add new user to database
+            br
+
+            form.form(method='post' action='/updatePerson')
+                div
+                    | First name:
+                    br
+                    input(type='text', name='firstName' value=person.firstName)
+                    br
+                    |   Last name:
+                    br
+                    input(type='text', name='lastName' value=person.lastName)
+                    br
+                    |   Age:
+                    br
+                    input(type='number', name='age' value=person.age)
+                    br
+                    |   City:
+                    br
+                    input(type='text', name='city' value=person.city)
+                    br
+                    |   Country:
+                    br
+                    input(type='text', name='country' value=person.country)
+                    br
+                    br
+                    input(type='hidden' name='id' value=person.id)
+
+                    input(type='submit', value='Submit')
+
+
+    // end container

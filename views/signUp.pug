@@ -1,0 +1,34 @@
+extends layout
+
+block content
+
+    .row
+        .col-lg-4.col-sm-12.offset-4
+
+            br
+            h2.text-center Sign Up
+            br
+
+            form.form(method='post' action='/createUser')
+                div
+                    |   Username:
+                    br
+                    input(type='text', name='userName')
+                    br
+                    |   Email:
+                    br
+                    input(type='email', name='email')
+                    br
+                    |   Password:
+                    br
+                    input(type='password', name='passHash' )
+                    br
+                    |   Confirm Password:
+                    br
+                    input(type='password', name='passCheck' )
+                    br
+                    br
+                    input(type='submit', value='Submit')
+
+
+    // end container

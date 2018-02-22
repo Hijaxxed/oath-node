@@ -1,0 +1,192 @@
+body{
+    font-family: Arial;
+    color:white;
+    background: linear-gradient(to right, rgb(71, 182, 216), rgb(18, 78, 112));
+    overflow-x: hidden;
+    box-sizing: content-box;
+    
+}
+
+h1 {
+    font-family: 'Lucida Sans';
+    text-transform: capitalize;
+}
+
+.title{
+    text-align: left;
+    background:linear-gradient(to right, rgb(71, 182, 216), rgb(18, 78, 112));
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 1.5em;
+
+}
+
+.intro {
+    text-align: center;
+    padding-top: 3em;
+    padding-bottom: 2em;
+    margin: 20px 20px;
+}
+
+
+a {
+    color:rgb(0, 0, 0);
+}
+
+.big {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: rgb(169, 174, 189);
+    text-transform: capitalize;
+    text-align: center;
+    font-style: italic;
+    padding: 1em;
+}
+
+.bordered {
+    /*border: white 1.5px solid;*/
+    border-radius: 20px;
+    margin: 20px auto;
+    background-color: rgb(58, 61, 66);
+}
+
+.section {
+    /*border: white 1.5px solid;*/
+    
+    margin: 20px auto;
+    background-color: rgb(58, 61, 66);
+}
+
+.fancyList {
+    list-style-type: circle;
+}
+
+#inputText {
+    color: white;
+    background-color: rgb(58, 61, 66);
+    padding: .75em;
+    border-radius: 20px;
+}
+
+#txt {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin: 0 auto;
+    min-height: 75px;
+    min-width: 500px;
+    max-width: 600px;
+    background-color: lightslategray;
+    border-radius: 8px;
+}
+
+#button1 {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    background-color: rgb(58, 61, 66);
+    color: white;
+    
+}
+
+#dbtable {
+    background-color: rgb(58, 61, 66);
+    margin: 45px auto;  
+    width: 80%;
+}
+
+th {
+    border-bottom: 1px solid white;
+    background-color: rgb(58, 61, 66);
+    height: 60px;
+    font-family: Tahoma;
+    font-weight: bold;
+    text-align: center;
+}
+
+td {
+    border-top: 1px solid white;
+    height: 50px;
+    padding: 5px;
+    text-align: center;
+    background-color: rgb(82, 84, 87);
+
+}
+.form {
+    color:black;
+}
+
+.form input[type=text], input[type=password], input[type=email], input[type=number], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.form input[type=submit] {
+    width: 100%;
+    background-color: rgb(71, 182, 216);
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.form input[type=submit]:hover {
+    background-color: rgb(18, 78, 112);
+}
+
+.form div {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    margin-bottom: 50px;
+}
+
+.trash {
+    padding:0;
+    text-align: center;
+}
+
+.edit {
+    padding:0;
+    text-align: center;
+}
+
+
+
+/* Navbar */
+
+.topnav {
+    list-style-type: none;
+    margin: 0 25px;
+    padding: 0px 15px;
+    overflow: hidden;
+    background: linear-gradient(to bottom, rgb(66, 69, 70), rgb(3, 13, 19));
+    border-radius: 12px;
+}
+
+
+.topnav li {float: left;}
+
+.topnav li a {
+    display: inline-block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+
+.topnav li a:hover {
+    background-color: #555;
+}
+
+.topnav #account {
+    float: right;
+}

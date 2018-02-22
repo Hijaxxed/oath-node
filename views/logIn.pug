@@ -1,0 +1,26 @@
+extends layout
+
+block content
+
+    .row
+        .col-lg-4.col-sm-12.offset-4
+
+            br
+            h2.text-center Log In
+            br
+
+            form.form(method='post' action='/logInUser')
+                div
+                    |   Email:
+                    br
+                    input(type='email', name='email')
+                    br
+                    |   Password:
+                    br
+                    input(type='password', name='passHash')
+                    br
+                    br
+                    input(type='submit', value='Submit')
+
+
+    // end container
