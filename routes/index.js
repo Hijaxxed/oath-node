@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
+var pg = require('pg');
+
 var mysql      = require('mysql');
 var connection = mysql.createConnection({
   host     : '127.0.0.1',
