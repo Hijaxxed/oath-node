@@ -4,11 +4,33 @@ block content
 
 
     .row
-        .col-lg-4.col-sm-12.offset-4
+        .col-lg-8.col-sm-12.offset-2
 
             br
             h2.text-center Account Details
             br
+
+            div.accountDetails(method='post' action='/editAccount')
+                div
+                    p   Username: #{loggedInUser.userName}
+                    br
+                    br
+                    p   Email: #{loggedInUser.email}
+                    br
+                    br
+                    p   Description: #{loggedInUser.description}
+                    br
+                    br
+
+            
+
+    .row
+        .col-lg-4.col-sm-12.offset-4
+
+            br
+            h2.text-center Edit Account
+            br
+
 
             form.form(method='post' action='/editAccount')
                 div
@@ -22,7 +44,8 @@ block content
                     br
                     |   Description:
                     br
-                    input(type='text', name='description' value=loggedInUser.description)
+                    //input#desc(type='text', name='description' value=loggedInUser.description)
+                    textarea#desc(rows=10, type='text', name='description' value=loggedInUser.description)
                     br
 
                     input(type='submit', value='Change')
