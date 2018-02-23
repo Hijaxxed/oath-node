@@ -1,0 +1,33 @@
+extends layout
+
+block content
+
+    
+
+    .row
+        .col-lg-4.col-sm-12.offset-4
+
+            br
+            h2.text-center Edit Account
+            br
+
+            form.form(method='post' action='/editAccountForm')
+                div
+                    |   Username:
+                    br
+                    input(type='text', name='userName' value=loggedInUser.userName)
+                    br
+                    |   Email:
+                    br
+                    input(type='email', name='lastName' value=loggedInUser.email)
+                    br
+                    |   Description:
+                    br
+                    input(type='text', name='description' value=loggedInUser.description)
+                    br
+
+                    input(type='submit', value='Submit')
+ 
+
+
+    // end container

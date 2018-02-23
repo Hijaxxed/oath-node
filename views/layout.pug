@@ -14,9 +14,10 @@ html(lang='en')
         .col-lg-12.col-sm-12
           .title
             if loggedInUser
-              h1 Welcome To My Website - #{loggedInUser.userName}
+              h1 
+                | Oath Project - Welcome #{loggedInUser.userName}
             else
-              h1 Welcome To My Website  
+              h1 Oath Project  
       // end row
       .row
         .col-lg-12.col-sm-12
@@ -30,11 +31,14 @@ html(lang='en')
 
             if loggedInUser
               li#account
-
-            li#account
-              a(href='/logIn') Log In
-            li#account
-              a(href='/signUp') Register
+                a(href='/accountDetails') Account
+              li#account
+                a(href='/signOut') Sign Out
+            else
+              li#account
+                a(href='/logIn') Log In
+              li#account
+                a(href='/signUp') Register
 
 
       block content

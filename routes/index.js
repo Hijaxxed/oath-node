@@ -11,20 +11,26 @@ var connection = mysql.createConnection({
 
 var name = "Declan Hetherington";
 
+var loggedInUser = null;
+
 router.get('/', function(req, res, next) {
-  var loggedInUser = null;
-  if(req.session.user){
-    loggedInUser = req.session.user;
-  }
+
+  loggedInUser = req.session.user;
+
+  
   res.render('index',{name, loggedInUser});
 });
 
 router.get('/about', function(req, res, next) {
 
-  res.render('about', {name});
+  loggedInUser = req.session.user;
+
+  res.render('about', {name, loggedInUser});
 });
 
 router.get('/database', function(req,res,next){
+
+
 
   connection.connect(function(err){
     connection.query('SELECT * FROM Population', function(err, results, fields){
@@ -36,10 +42,9 @@ router.get('/database', function(req,res,next){
       for(i in population[0]){
         tableName[i] = i;
       }
-      res.render('database', {population, tableName});
+      res.render('database', {population, tableName, loggedInUser});
     });
   });
-
 });
 
 router.post('/newPerson', function(req, res, next) {
@@ -134,22 +139,24 @@ router.get('/logIn', function(req, res, next) {
 
 router.post('/logInUser', function(req, res, next) {
   var exists = false;
-  if (req.body.email === '' || req.body.passhash === '' ){
+  if (req.body.email === '' || req.body.passHash === '' ){
     res.redirect('/logIn')
   } else { 
       connection.connect(function(err){
         connection.query(`SELECT * FROM Users`, function(err, results, fields){   
-          console.log(results);  
+          //connection.query(`SELECT email FROM Users WHERE email='${req.body.email}'`, function(err, results, fields){
+
+          //console.log(results);  
           var userThere = true;  
           if(err)
             throw err;
     
           for(var i = 0; i < results.length; i++){
             if(req.body.email === results[i].email){
-              if(req.body.passHash === results[i].passhash){
+              if(req.body.passHash === results[i].passHash){
 
                 req.session.user = {
-                  email : req.body.email, userName : results[i].userName
+                  email : req.body.email, userName : results[i].userName, description : results[i].description
                 };
 
                 return res.redirect('/');
@@ -169,6 +176,42 @@ router.post('/logInUser', function(req, res, next) {
     } // end else
 }); //end router.post
 
+router.get('/signOut', function(req, res, next) {
 
+  req.session.user = null;
+
+  res.redirect('/');
+});
+
+router.get('/accountDetails', function(req, res, next) {
+
+  loggedInUser = req.session.user;
+  console.log(loggedInUser);
+
+  res.render('accountDetails', {name, loggedInUser});
+});
+
+router.post('/editAccount', function(req, res, next) {
+
+  if (req.body.userName === '' || req.body.email === '' ){
+    res.redirect('/accountDetails')
+  } else { 
+
+    connection.connect(function(err){
+
+      connection.query(`UPDATE Users SET userName = '${req.body.userName}' , description='${req.body.description}' WHERE email = '${loggedInUser.email}';`, function(err, results, fields){
+        if(err)
+          throw err;
+
+          req.session.user = {
+            userName : req.body.userName, description : req.body.description, email : loggedInUser.email
+          };
+
+        console.log('Description:' + loggedInUser.description);
+        res.redirect('/accountDetails')
+      });
+    });
+  }
+});
 
 module.exports = router;
